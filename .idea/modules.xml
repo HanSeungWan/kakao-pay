@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kakao-pay.iml" filepath="$PROJECT_DIR$/.idea/modules/kakao-pay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kakao-pay_main.iml" filepath="$PROJECT_DIR$/.idea/modules/kakao-pay_main.iml" group="kakao-pay" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kakao-pay_test.iml" filepath="$PROJECT_DIR$/.idea/modules/kakao-pay_test.iml" group="kakao-pay" />
+    </modules>
+  </component>
+</project>
