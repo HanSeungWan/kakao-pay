@@ -28,7 +28,7 @@ public class Util {
 
     public static long getDiffTime(Date curDate, Date targetDate) {
 
-        long diffMinute = (curDate.getTime() - targetDate.getTime()) / 60000;
+        long diffMinute = (targetDate.getTime() - curDate.getTime()) / 60000;
 
         return diffMinute;
     }

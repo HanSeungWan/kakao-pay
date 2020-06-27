@@ -34,4 +34,16 @@ public class SprinkleController {
     public MoneyResultDto getMoney(@RequestHeader(value="X-USER-ID") String reqUserId, @RequestHeader(value="X-ROOM-ID") String roomId, @RequestParam("token") String token) {
         return sprinkleMoneyService.getMoney(reqUserId,roomId,token);
     }
+
+    @RequestMapping(value = "/api/testDate", method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.OK)
+    public boolean test(@RequestHeader(value="X-USER-ID") String reqUserId, @RequestHeader(value="X-ROOM-ID") String roomId, @RequestParam("token") String token) {
+         return sprinkleMoneyService.testDate(reqUserId,roomId,token);
+    }
+
+    @RequestMapping(value = "/api/testTime", method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.OK)
+    public boolean testTime(@RequestHeader(value="X-USER-ID") String reqUserId, @RequestHeader(value="X-ROOM-ID") String roomId, @RequestParam("token") String token) {
+        return sprinkleMoneyService.testTime(reqUserId,roomId,token);
+    }
 }

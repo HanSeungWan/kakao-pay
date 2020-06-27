@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -318,5 +319,36 @@ public class SprinkleMoneyService {
      * */
     private long getSprinkleAmt(long amt) {
         return (long)(Math.random()*amt);
+    }
+
+    public boolean testDate(String reqUserId, String roomId, String token) {
+        SprinkleMoneyDto info = sprinkleMoneyRepo.findByTokenAndRoomId(token, roomId);
+        info.setSprinkleTime(getTestDate(info.getSprinkleTime(), 8));
+        sprinkleMoneyRepo.save(info);
+
+        return true;
+    }
+
+    public boolean testTime(String reqUserId, String roomId, String token) {
+        SprinkleMoneyDto info = sprinkleMoneyRepo.findByTokenAndRoomId(token, roomId);
+        info.setSprinkleTime(getTestTime(info.getSprinkleTime(), 12));
+        sprinkleMoneyRepo.save(info);
+
+        return false;
+    }
+
+
+    private Date getTestTime(Date curDate, int min) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(curDate);
+        cal.add(Calendar.MINUTE, min);
+        return new Date(cal.getTimeInMillis());
+    }
+
+    private Date getTestDate(Date curDate, int date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(curDate);
+        cal.add(Calendar.DATE, date);
+        return new Date(cal.getTimeInMillis());
     }
 }

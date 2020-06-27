@@ -79,4 +79,38 @@ public class TestApi {
         HttpEntity<?> httpEntity = new HttpEntity<>(httpHeaders);
         return restTemplate.exchange(builder.toUriString(), HttpMethod.GET, httpEntity, MoneyResultDto.class).getBody();
     }
+
+    public boolean testDate(String reqUserId, String roomId, String token) {
+
+        sprinkleMoneyApiUrl = "http://localhost:8080/api/testDate";
+
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(sprinkleMoneyApiUrl)
+                .queryParam("token", token);
+
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.set(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE);
+        httpHeaders.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+        httpHeaders.set("X-USER-ID", reqUserId);
+        httpHeaders.set("X-ROOM-ID", roomId);
+
+        HttpEntity<?> httpEntity = new HttpEntity<>(httpHeaders);
+        return restTemplate.exchange(builder.toUriString(), HttpMethod.POST, httpEntity, boolean.class).getBody();
+    }
+
+    public boolean testTime(String reqUserId, String roomId, String token) {
+
+        sprinkleMoneyApiUrl = "http://localhost:8080/api/testTime";
+
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(sprinkleMoneyApiUrl)
+                .queryParam("token", token);
+
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.set(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE);
+        httpHeaders.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+        httpHeaders.set("X-USER-ID", reqUserId);
+        httpHeaders.set("X-ROOM-ID", roomId);
+
+        HttpEntity<?> httpEntity = new HttpEntity<>(httpHeaders);
+        return restTemplate.exchange(builder.toUriString(), HttpMethod.POST, httpEntity, boolean.class).getBody();
+    }
 }
