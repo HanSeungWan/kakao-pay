@@ -1,7 +1,22 @@
-group 'kakao-pay'
-version '1.0-SNAPSHOT'
+buildscript {
+    ext{
+        springBootVersion='2.0.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
 
 apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.gsshop'
+version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
@@ -10,5 +25,16 @@ repositories {
 }
 
 dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile ('org.springframework.boot:spring-boot-starter-thymeleaf')
+    implementation('org.springframework.boot:spring-boot-starter-data-mongodb')
+    compile ('org.projectlombok:lombok:1.16.6')
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'de.svenkubiak', name: 'embedded-mongodb', version: '4.4.0'
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
+
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    runtime('com.h2database:h2')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.junit.jupiter:junit-jupiter-engine:5.2.0')
 }
